@@ -1,0 +1,13 @@
+i
+long_and_mnemonic_identifier
+it_contains_1number
+it_contains_CapitalLetters
+dot.is_not_accepted
+thisiscorrectalthoughthewordsarenotseparated
+
+_
+_foo
+foo_
+_foo_
+foo_bar
+foo__bar

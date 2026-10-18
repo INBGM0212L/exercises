@@ -1,0 +1,87 @@
+# `P105401e` - C azonosítók (állományvégjelig olvasás)
+
+## A függvény
+Írj egy `is_c_identifier` nevű függvényt, mely visszaadja azt, hogy a paramétereként megkapott sztring a C/C++ nyelvek nyelvek azonosítókra vonatkozó elnevezési konvencióinak megfelel-e!
+
+### Magyarázat
+A C/C++ nyelvekben az elnevezési konvenciók szerint az azonosítókban csak kisbetűket használnak, a többszavas azonosítókban pedig a szavakat az aláhúzás (`'_'`) karakterrel választják el egymástól.
+
+Példa C/C++ azonosítókra:
+* `i`,
+* `long_and_mnemonic_identifier`.
+
+### Paraméterlista
+1. `value` - az ellenőrizendő sztring (egy legalább `1`, legfeljebb `30` karakter hosszúságú sztring)
+
+### Visszaadott érték
+* az ellenőrzés eredménye (`True`, ha a sztring megfelel a formátumnak, `False`, ha nem)
+
+### Példák
+ | `value` | Visszaadott érték |
+ | :--- | --- |
+ | `"i"` | `True` |
+ | `"long_and_mnemonic_identifier"` | `True` |
+ | `"it_contains_1number"` | `False` |
+ | `"it_contains_CapitalLetters"` | `False` |
+ | `"dot.is_not_accepted"` | `False` |
+ | `"thisiscorrectalthoughthewordsarenotseparated"` | `True` |
+ | `""` | `False` |
+ | `"_"` | `False` |
+ | `"_foo"` | `False` |
+ | `"foo_"` | `False` |
+ | `"_foo_"` | `False` |
+ | `"foo_bar"` | `True` |
+ | `"foo__bar"` | `False` |
+
+## A főprogram
+Készíts egy olyan főprogramot, mely az alábbi specifikációk alapján teszi kipróbálhatóvá a megoldást!
+
+* A standard bemeneten legalább `3`, legfeljebb `10` darab teszteset található.
+* A tesztesetek végét állományvégjel (`EOF`) jelzi.
+* Minden tesztesetet pontosan egy sor ír le, melyben a függvény argumentuma (`value`) szerepel.
+* A(z) `"YES"` sztring kerüljön a kimenetre, ha a függvény igaz (`True`) értéket ad vissza.
+* A(z) `"NO"` sztring kerüljön a kimenetre, ha a függvény hamis (`False`) értéket ad vissza.
+
+## Tesztek
+
+| Teszt | Bemenet | Elvárt kimenet |
+| :--- | :--- | :--- |
+| `test-00` | [`test-00.in`](test-00.in) | [`test-00.out`](test-00.out) |
+
+### `test-00`
+
+#### Standard bemenet ([`test-00.in`](test-00.in))
+
+```
+i
+long_and_mnemonic_identifier
+it_contains_1number
+it_contains_CapitalLetters
+dot.is_not_accepted
+thisiscorrectalthoughthewordsarenotseparated
+
+_
+_foo
+foo_
+_foo_
+foo_bar
+foo__bar
+```
+
+#### Elvárt kimenet ([`test-00.out`](test-00.out))
+
+```
+YES
+YES
+NO
+NO
+NO
+YES
+NO
+NO
+NO
+NO
+NO
+YES
+NO
+```
